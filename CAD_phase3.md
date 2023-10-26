@@ -72,7 +72,8 @@ Downlod themes :
 
   git clone https//git.com/<repo\_name>/ themes/paper
 
-![](Aspose.Words.fd254e84-9413-40ee-8a81-5e235395eb6c.002.png)
+![theme](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/132cca78-0424-4781-a557-0aad2f78af89)
+
 
 Configure hugo.toml
 
@@ -143,7 +144,8 @@ weight = 10
 
 **layouts>>\_default>>baseof.html**
 
-![theme](https://github.com/Vasanthv7/Personal-Blog/assets/126228661/b2bfb331-1f79-4a2a-940d-0c07da3ff4e3)
+![default](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/a4335bc5-3b6b-4fb5-bf77-97a954768d39)
+
 
 
 
@@ -312,15 +314,15 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
  <div class="break-words">
 
-`      `{{ site.Params.bio | default (print `A personal blog by `
+ {{ site.Params.bio | default (print `A personal blog by `
 
-`      `site.Params.name) }}
+ site.Params.name) }}
 
-`    `</div>
+ </div>
 
-`  `</div>
+</div>
 
-`  `{{ end }}
+{{ end }}
 
 </div>
 
@@ -330,27 +332,27 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
 
-`  `{{ if gt .Weight 0 }}
+{{ if gt .Weight 0 }}
 
-`  `<span
+<span
 
-`    `class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
 
-`    `>Featured</span
+>Featured</span
 
-`  `>
+>
 
-`  `{{ end }}
+{{ end }}
 
-`  `<h2 class="!my-0 pb-1 font-bold !leading-none">{{ .Title }}</h2>
+<h2 class="!my-0 pb-1 font-bold !leading-none">{{ .Title }}</h2>
 
-`  `<time class="text-sm antialiased opacity-60"
+<time class="text-sm antialiased opacity-60"
 
-`    `>{{ .Date | time.Format ":date\_medium" }}</time
+ >{{ .Date | time.Format ":date\_medium" }}</time
 
-`  `>
+>
 
-`  `<a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+<a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
 
 </section>
 
@@ -362,21 +364,20 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 <nav class="mt-16 flex">
 
-`  `{{ if $paginator.HasPrev }}
+ {{ if $paginator.HasPrev }}
 
-`  `<a class="btn" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev\_page" }}</a>
+ <a class="btn" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev\_page" }}</a>
+ {{ end }}<!---->
 
-`  `{{ end }}<!---->
+ {{ if $paginator.HasNext }}
 
-`  `{{ if $paginator.HasNext }}
+ <a class="btn ml-auto" href="{{ $paginator.Next.URL }}"
 
-`  `<a class="btn ml-auto" href="{{ $paginator.Next.URL }}"
+ >{{ i18n "next\_page" }} →</a
 
-`    `>{{ i18n "next\_page" }} →</a
+ >
 
-`  `>
-
-`  `{{ end }}
+{{ end }}
 
 </nav>
 
@@ -391,187 +392,184 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 <article>
 
-`  `<header class="mb-16">
+<header class="mb-16">
 
-`    `<h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
+ <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
 
-`    `{{ if ne .Type "page" }}
+ {{ if ne .Type "page" }}
 
-`    `<div class="text-sm antialiased opacity-60">
+ <div class="text-sm antialiased opacity-60">
 
-`      `{{ if .Date }}
+ {{ if .Date }}
 
-`      `<time>{{ .Date | time.Format ":date\_medium" }}</time>
+ <time>{{ .Date | time.Format ":date\_medium" }}</time>
 
-`      `{{ end }}<!---->
+ {{ end }}<!---->
 
-`      `{{ $single\_author := or .Params.Author site.Author.name }}
+ {{ $single\_author := or .Params.Author site.Author.name }}
 
-`      `<!---->
+ <!---->
 
-`      `{{ if $single\_author }}
+ {{ if $single\_author }}
 
-`      `<span class="mx-1">&middot;</span>
+<span class="mx-1">&middot;</span>
 
-`      `<span>{{ $single\_author }}</span>
+ <span>{{ $single\_author }}</span>
 
-`      `{{ end }}
+ {{ end }}
 
-`    `</div>
+ </div>
 
-`    `{{ end }}
+ {{ end }}
 
-`  `</header>
+ </header>
 
-`  `<section>{{ .Content }}</section>
+ <section>{{ .Content }}</section>
 
-`  `<!-- Post Tags -->
+ <!-- Post Tags -->
 
-`  `{{ if .Params.tags }}
+ {{ if .Params.tags }}
 
-`  `<footer class="mt-12 flex flex-wrap">
+ <footer class="mt-12 flex flex-wrap">
 
-`    `{{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+ {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
 
-`    `<a
+ <a
 
-`      `class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+ class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
 
-`      `href="{{ $href }}"
+ href="{{ $href }}"
 
-`      `>{{ . }}</a
+>{{ . }}</a
 
-`    `>
+>
 
-`    `{{ end }}
+{{ end }}
+</footer>
 
-`  `</footer>
+{{ end }}
 
-`  `{{ end }}
+<!-- Post Nav -->
 
-`  `<!-- Post Nav -->
+{{ if not site.Params.disablePostNavigation }}<!---->
 
-`  `{{ if not site.Params.disablePostNavigation }}<!---->
+{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
 
-`  `{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
+{{ if and (gt (len $pages) 1) (in $pages . ) }}
 
-`  `{{ if and (gt (len $pages) 1) (in $pages . ) }}
+<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
 
-`  `<nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+{{ with $pages.Next . }}
 
-`    `{{ with $pages.Next . }}
+<a
 
-`    `<a
+class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
 
-`      `class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+href="{{ .Permalink }}"
 
-`      `href="{{ .Permalink }}"
+><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
 
-`      `><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
+>
 
-`    `>
+{{ end }}<!---->
 
-`    `{{ end }}<!---->
+{{ with $pages.Prev . }}
 
-`    `{{ with $pages.Prev . }}
+<a
 
-`    `<a
+  class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
 
-`      `class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+     href="{{ .Permalink }}"
 
-`      `href="{{ .Permalink }}"
+   ><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
 
-`      `><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
+ >
 
-`    `>
+ {{ end }}
 
-`    `{{ end }}
+ </nav>
 
-`  `</nav>
+ {{ end }}<!---->
 
-`  `{{ end }}<!---->
+ {{ end }}<!---->
 
-`  `{{ end }}<!---->
+ <div class="con1">      
 
-`  `<div class="con1">      
+<!-- Disqus -->
 
-`     `<!-- Disqus -->
+  {{ if and site.DisqusShortname (not (eq .Params.comments false)) }}<!--
 
-`    `{{ if and site.DisqusShortname (not (eq .Params.comments false)) }}<!--
+   <div class="mt-24" id="disqus\_thread"></div>
 
-`    `<div class="mt-24" id="disqus\_thread"></div>
+  <script>
 
-`    `<script>
+   const disqusShortname = '{{ site.DisqusShortname }}';
 
-`      `const disqusShortname = '{{ site.DisqusShortname }}';
+   const script = document.createElement('script');
 
-`      `const script = document.createElement('script');
+  script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
 
-`      `script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+   script.setAttribute('data-timestamp', +new Date());
 
-`      `script.setAttribute('data-timestamp', +new Date());
+   document.head.appendChild(script);
+   </script>-->
 
-`      `document.head.appendChild(script);
+   <div id="disqus\_thread"></div>
 
-`    `</script>-->
+   <script>
 
-`    `<div id="disqus\_thread"></div>
+   /\*\*
 
-`  `<script>
+https://disqus.com/admin/universalcode/#configuration-variables    \*/
 
-`      `/\*\*
+  \*
 
-`      `https://disqus.com/admin/universalcode/#configuration-variables    \*/
+  var disqus\_config = function () {
 
-`      `/\*
+  this.page.url = PAGE\_URL;  // Replace PAGE\_URL with your page's canonical URL variable
 
-`      `var disqus\_config = function () {
+  this.page.identifier = PAGE\_IDENTIFIER; // Replace PAGE\_IDENTIFIER with your page's unique identifier variable
 
-`      `this.page.url = PAGE\_URL;  // Replace PAGE\_URL with your page's canonical URL variable
+   };
 
-`      `this.page.identifier = PAGE\_IDENTIFIER; // Replace PAGE\_IDENTIFIER with your page's unique identifier variable
+\*/
 
-`      `};
+(function() { // DON'T EDIT BELOW THIS LINE
 
-`      `\*/
+var d = document, s = d.createElement('script');
+s.src = 'https://personal-bolg.disqus.com/embed.js';
 
-`      `(function() { // DON'T EDIT BELOW THIS LINE
+s.setAttribute('data-timestamp', +new Date());
 
-`      `var d = document, s = d.createElement('script');
+(d.head || d.body).appendChild(s);
 
-`      `s.src = 'https://personal-bolg.disqus.com/embed.js';
+})();
 
-`      `s.setAttribute('data-timestamp', +new Date());
+</script>
 
-`      `(d.head || d.body).appendChild(s);
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref\_noscript">comments powered by Disqus.</a></noscript>
 
-`      `})();
+<script id="dsq-count-scr" src="//personal-bolg.disqus.com/count.js" async></script> {{ end }}
 
-`  `</script>
+</div>
 
-`  `<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref\_noscript">comments powered by Disqus.</a></noscript>
-
-`  `<script id="dsq-count-scr" src="//personal-bolg.disqus.com/count.js" async></script> {{ end }}
-
-`  `</div>
-
-`  `<style> 
+<style> 
 
 .con1 {
 
-`    `margin-top: 20px; /\* Add space below content 1 \*/
+`margin-top: 20px; /\* Add space below content 1 \*/
 
-`   `}
+}
 
-`  `</style>
+</style>
 
-`  `{{ if and site.DisqusShortname (not (eq .Params.map1 false)) }}
+{{ if and site.DisqusShortname (not (eq .Params.map1 false)) }}
 
-`  `<div class="mapouter"><div class="gmap\_canvas"><iframe width="752" height="500" id="gmap\_canvas" src="https://maps.google.com/maps?q=big%20temple%20thanjavur&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-i.net">american psycho 123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:752px;}</style><a href="https://www.embedgooglemap.net"></a>
+<div class="mapouter"><div class="gmap\_canvas"><iframe width="752" height="500" id="gmap\_canvas" src="https://maps.google.com/maps?q=big%20temple%20thanjavur&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-i.net">american psycho 123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:752px;}</style><a href="https://www.embedgooglemap.net"></a>
 
-`    `<style>.gmap\_canvas {overflow:hidden;background:none!important;height:500px;width:752px;}</style></div></div>
+<style>.gmap\_canvas {overflow:hidden;background:none!important;height:500px;width:752px;}</style></div></div>
 
-`  `{{end}}
+{{end}}
 
 `  `<div class="mapt">
 
@@ -579,13 +577,13 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 `    `<div class="mapouter"><div class="gmap\_canvas"><iframe width="1080" height="500" id="gmap\_canvas" src="https://maps.google.com/maps?q=tourist%20place%20in%20delhi&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-i.net">american psycho 123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:1080px;}</style><a href="https://www.embedgooglemap.net"></a>
 
-`      `<style>.gmap\_canvas {overflow:hidden;background:none!important;height:500px;width:1080px;}</style></div></div>
+`<style>.gmap\_canvas {overflow:hidden;background:none!important;height:500px;width:1080px;}</style></div></div>
 
-`    `{{end}}
+{{end}}
 
-`  `</div>
+</div>
 
-`  `<style>
+`<style>
 
 .mapt{
 
@@ -593,13 +591,13 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 ` `/\* Set the height of the map as needed \*/
 
-`    `margin: 0 auto; /\* Center horizontally \*/
+margin: 0 auto; /\* Center horizontally \*/
 
-`    `text-align: center;
+text-align: center;
 
-`  `}
+}
 
-`  `</style>  
+</style>  
 
 </article>
 
@@ -614,37 +612,37 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 <footer
 
-`  `class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
 
 \>
 
-`  `<div class="mr-auto">
+<div class="mr-auto">
 
-`    `&copy; {{ now.Year }}
+&copy; {{ now.Year }}
 
-`    `<a class="link" href="{{ `` | absURL }}">{{ site.Title }}</a>
+<a class="link" href="{{ `` | absURL }}">{{ site.Title }}</a>
 
-`  `</div>
+</div>
 
-`  `<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="\_blank"
+<a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="\_blank"
 
-`    `>Powered by Hugo️️</a
+>Powered by Hugo️️</a
 
-`  `>️
+>️
 
-`  `<a
+<a
 
-`    `class="link"
+class="link"
 
-`    `href="https://github.com/nanxiaobei/hugo-paper"
+href="https://github.com/nanxiaobei/hugo-paper"
 
-`    `rel="noopener"
+rel="noopener"
 
-`    `target="\_blank"
+target="\_blank"
 
-`    `>✎ Paper</a
+>✎ Paper</a
 
-`  `>
+>
 
 </footer>
 
@@ -652,193 +650,185 @@ class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px
 
 <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
 
-`  `<div class="relative z-50 mr-auto flex items-center">
+<div class="relative z-50 mr-auto flex items-center">
 
-`    `<a
+<a
 
-`      `class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
 
-`      `href="{{ `` | absURL }}"
+href="{{ `` | absURL }}"
 
-`      `>{{ site.Title }}</a
+>{{ site.Title }}</a
 
-`    `>
+>
 
-`    `<div
+<div
 
-`      `class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)\_left\_center/cover\_no-repeat] dark:invert{{ else }}[background:url(./theme.png)\_left\_center/\_auto\_theme('spacing.6')\_no-repeat] [transition:\_background-position\_0.4s\_steps(5)]{{ end }} dark:[background-position:right]"
+class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)\_left\_center/cover\_no-repeat] dark:invert{{ else }}[background:url(./theme.png)\_left\_center/\_auto\_theme('spacing.6')\_no-repeat] [transition:\_background-position\_0.4s\_steps(5)]{{ end }} dark:[background-position:right]"
 
-`      `role="button"
+role="button"
 
-`      `aria-label="Dark"
+aria-label="Dark"
 
-`    `></div>
+></div>
 
-`  `</div>
+</div>
 
-`  `<div
+<div
 
-`    `class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
 
-`    `role="button"
+role="button"
 
-`    `aria-label="Menu"
+aria-label="Menu"
 
-`  `></div>
+></div>
 
-`  `{{ $bg\_color := $.Scratch.Get "bg\_color" }}<!---->
+{{ $bg\_color := $.Scratch.Get "bg\_color" }}<!---->
 
-`  `<script>
+<script>
 
-`    `// base
+// base
 
-`    `const htmlClass = document.documentElement.classList;
+const htmlClass = document.documentElement.classList;
 
-`    `setTimeout(() => {
+setTimeout(() => {
 
-`      `htmlClass.remove('not-ready');
+htmlClass.remove('not-ready');
 
-`    `}, 10);
+`}, 10);
 
-`    `const btnMenu = document.querySelector('.btn-menu');
+const btnMenu = document.querySelector('.btn-menu');
 
-`    `btnMenu.addEventListener('click', () => {
+btnMenu.addEventListener('click', () => {
 
-`      `htmlClass.toggle('open');
+htmlClass.toggle('open');
 
-`    `});    const metaTheme = document.querySelector('meta[name="theme-color"]');
 
-`    `const lightBg = '{{ $bg\_color }}'.replace(/"/g, '');
+};
 
-`    `const setDark = (isDark) => {
+// init
 
-`      `metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-`      `htmlClass[isDark ? 'add' : 'remove']('dark');
+if (htmlClass.contains('dark')) {
 
-`      `localStorage.setItem('dark', isDark);
+setDark(true);
 
-`    `};
+} else {
 
-`    `// init
+const darkVal = localStorage.getItem('dark');
 
-`    `const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
 
-`    `if (htmlClass.contains('dark')) {
+}
 
-`      `setDark(true);
+darkScheme.addEventListener('change', (event) => {
 
-`    `} else {
+setDark(event.matches);
 
-`      `const darkVal = localStorage.getItem('dark');
+});
+// manual switch
 
-`      `setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+const btnDark = document.querySelector('.btn-dark');
 
-`    `}
+btnDark.addEventListener('click', () => {
 
-`    `darkScheme.addEventListener('change', (event) => {
+setDark(localStorage.getItem('dark') !== 'true');
 
-`      `setDark(event.matches);
+});
 
-`    `});
+</script>
 
-`    `// manual switch
+<div
 
-`    `const btnDark = document.querySelector('.btn-dark');
+class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
 
-`    `btnDark.addEventListener('click', () => {
+>
 
-`      `setDark(localStorage.getItem('dark') !== 'true');
+{ $url := .RelPermalink }}<!---->
 
-`    `});
+{{ with site.Menus.main }}
 
-`  `</script>
+<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
 
-`  `<div
+{{ range . }}
 
-`    `class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+<a
 
-`  `>
+class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
 
-`    `{{ $url := .RelPermalink }}<!---->
+href="{{ .URL }}"
 
-`    `{{ with site.Menus.main }}
+>{{ .Name }}</a
 
-`    `<nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+`>
 
-`      `{{ range . }}
+{{ end }}
 
-`      `<a
+</nav>
 
-`        `class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+{{ end }}<!---->
 
-`        `href="{{ .URL }}"
+`{{ with $.Scratch.Get "social\_list" }}
 
-`        `>{{ .Name }}</a
+`<nav
 
-`      `>
+class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
 
-`      `{{ end }}
+>
 
-`    `</nav>
+{{ range . }}<!---->
 
-`    `{{ end }}<!---->
+<a
 
-`    `{{ with $.Scratch.Get "social\_list" }}
+class="h-8 w-8 text-[0] [background:var(--url)\_center\_center/cover\_no-repeat] lg:h-6 lg:w-6"
 
-`    `<nav
+`style="--url: url(./{{ . }}.svg)"
 
-`      `class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else }}https://{{ . }}.com/{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
 
-`    `>
+target="\_blank"
 
-`      `{{ range . }}<!---->
+rel="{{ if eq . `rss` }}alternate{{ else }}me{{ end }}"
 
-`      `<a
+>
 
-`        `class="h-8 w-8 text-[0] [background:var(--url)\_center\_center/cover\_no-repeat] lg:h-6 lg:w-6"
+{{ . }}
 
-`        `style="--url: url(./{{ . }}.svg)"
+</a>
 
-`        `href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else }}https://{{ . }}.com/{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
+{{ end }}<!---->
 
-`        `target="\_blank"
+</nav>
 
-`        `rel="{{ if eq . `rss` }}alternate{{ else }}me{{ end }}"
+{{ end }}<!---->
 
-`      `>
-
-`        `{{ . }}
-
-`      `</a>
-
-`      `{{ end }}<!---->
-
-`    `</nav>
-
-`    `{{ end }}<!---->
-
-`  `</div>
+</div>
 
 </header>
 
 **Output**
 
-`	`**Dark mode**
+**Dark mode**
 
-`	`**![](Aspose.Words.fd254e84-9413-40ee-8a81-5e235395eb6c.005.png)**
+
+![main page](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/f71dc023-724a-411c-b2a1-2d27a30ec3e5)
 
 In normal 
 
-`	`![](Aspose.Words.fd254e84-9413-40ee-8a81-5e235395eb6c.006.png)
+![dark](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/41684ae1-445c-45ed-bd68-fa513f80a88a)
+
 
 Interactive Comment section 
 
-![](Aspose.Words.fd254e84-9413-40ee-8a81-5e235395eb6c.007.png)
+
+![comment](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/a62603e2-d926-4163-a4cb-5fe5d23452a2)
 
 Interactive map (for each blog)
 
-`	`![](Aspose.Words.fd254e84-9413-40ee-8a81-5e235395eb6c.008.png)	
+![map](https://github.com/santhoshkumarr1214/Personal-Blog/assets/144305419/8f57b775-1bfe-4382-81d5-d09e3d90f5a5)
+
 
 Conclution:
 
